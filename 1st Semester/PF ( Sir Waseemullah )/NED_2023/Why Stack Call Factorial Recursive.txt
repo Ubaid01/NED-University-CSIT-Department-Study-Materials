@@ -1,0 +1,45 @@
+| Step | Function Call                          | Call Stack                  | Explanation                                                                                             |
+|------|----------------------------------------|-----------------------------|---------------------------------------------------------------------------------------------------------|
+| 1    | `main` calls `factorial(5)`           | `main`                      | `main` initiates the call to `factorial(5)`.                                                             |
+| 2    | `factorial(5)` calls `factorial(4)`    | `main` -> `factorial(5)`    | `factorial(5)` is on the stack. It calls itself with `factorial(4)`.                                      |
+| 3    | `factorial(4)` calls `factorial(3)`    | `main` -> `factorial(5)`    | Another recursive call: `factorial(4)` now calls `factorial(3)`.                                          |
+| 4    | ...                                    | ...                         | Recursive calls continue until the base case is reached.                                                 |
+| 5    | `factorial(1)` returns 1               | `main` -> `factorial(5)`    | Base case: `factorial(1)` returns 1.                                                                    |
+| 6    | `factorial(2)` returns 2 * 1           | `main` -> `factorial(5)`    | Recursive call results: `factorial(2)` returns `2 * 1 = 2`.                                              |
+| 7    | `factorial(3)` returns 3 * 2           | `main` -> `factorial(5)`    | `factorial(3)` returns `3 * 2 = 6`.                                                                     |
+| 8    | `factorial(4)` returns 4 * 6           | `main` -> `factorial(5)`    | `factorial(4)` returns `4 * 6 = 24`.                                                                    |
+| 9    | `factorial(5)` returns 5 * 24          | `main`                      | Final result: `factorial(5)` returns `5 * 24 = 120`.                                                    |
+| 10   | Result displayed in `main`             |                             | The main function displays the result: "Factorial of 5 is: 120".                                       |
+| 11   | Program exits                         |                             | The program exits with a return code of 0.                                                             |
+
+
+Now, let's break down how the call stack works in this program:
+
+Function Call: main calls factorial(5)
+
+main function is called and it initiates the call to factorial with the argument 5.
+Recursive Calls: factorial(5) calls factorial(4), and so on...
+
+As factorial(5) executes, it calls itself with factorial(4), then factorial(3), and so on until it reaches the base case.
+Call Stack Frames:
+
+The call stack maintains frames for each function call. For example:
+main frame
+factorial(5) frame
+factorial(4) frame
+factorial(3) frame
+...
+factorial(1) frame
+Local Variables and Return Addresses:
+
+Each frame on the stack contains local variables (like n) and the return address. The return address points to the instruction in the calling function that should be executed after the called function completes.
+Base Case and Return Values:
+
+When the base case (n == 0 or n == 1) is reached, the function returns 1. Each recursive call then returns its result back up the call stack, and the final result is calculated.
+Stack Unwinding:
+
+As the recursive calls complete, the stack is unwound. Frames are popped off the stack, and memory associated with local variables is released.
+Final Result Displayed in main:
+
+The final result, the factorial of 5, is displayed in the main function.
+This example demonstrates how the call stack is essential for managing the flow of execution and local variables in a program with recursive function calls
